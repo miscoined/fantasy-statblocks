@@ -23,6 +23,10 @@
     let plugin = getContext<StatBlockPlugin>("plugin");
     let layout = getContext<Layout>("layout");
 
+    property = property.replaceAll("${HP}", monster.hp)
+      .replaceAll("${AC}", monster.ac)
+      .replaceAll("${INIMOD}", (monster.modifier > 0 ? "+" : "-") +  monster.modifier);
+
     let split: Array<{ text: string; original?: string } | string> = [property];
     if (dice) {
         if (
